@@ -83,9 +83,9 @@ class Perceptron:
     Y = np.array(df['y'])
     
     # Classification
-    perceptron_cls = Perceptron(eta=1.0, max_iter=100, problem_type='classification', plot=True)
-    perceptron_cls.fit(X, Y)
-    perceptron_cls.evaluate(X, Y)
+    # perceptron_cls = Perceptron(eta=1.0, max_iter=100, problem_type='classification', plot=True)
+    # perceptron_cls.fit(X, Y)
+    # perceptron_cls.evaluate(X, Y)
     
     # # Regression (using slightly different data for regression)
     # df_reg = pd.DataFrame(data=[[0,0,0],[0,1,1],[1,0,1],[1,1,2]], columns=['x1','x2','y'])
