@@ -1,0 +1,48 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+df = pd.DataFrame(data=[[0,0,0],[0,1,1],[1,0,1],[1,1,1]], columns=['x1','x2','y'])
+df
+df['x0'] = 1
+X = np.array(df[['x0','x1','x2']])
+Y = df['y']
+w_old = np.ones(3)
+eta = 0.05
+iteration = 0
+while(1):
+    iteration+=1
+    w_new = w_old.copy()
+    print(w_new)
+    for i in range(len(X)):
+        yhat = np.dot(X[i],w_old)
+        sigmoid = 1/(1+np.exp(-yhat))
+        w_old = w_old + eta * (Y[i]-sigmoid)* X[i]
+    if np.allclose(w_new,w_old):
+        print(iteration)
+        break
+from sklearn.datasets import load_iris
+iris = load_iris()
+X = pd.DataFrame(iris.data, columns=iris.feature_names)
+y = pd.DataFrame(iris.target, columns=['y'])
+df = pd.DataFrame(X)
+df['y'] = y
+df = df[:100]
+df['bias']=1
+X = np.array(df[['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)',
+       'petal width (cm)','bias']])
+Y = df['y']
+w_old = np.ones(5)
+eta = 0.05
+iteration = 0
+while(1):
+    iteration+=1
+    w_new = w_old.copy()
+    print(w_new)
+    for i in range(len(X)):
+        yhat = np.dot(X[i],w_old)
+        sigmoid = 1/(1+np.exp(-yhat))
+        w_old = w_old + eta * (Y[i]-sigmoid)* X[i]
+    if np.allclose(w_new,w_old):
+        print(iteration)
+        break
+        
